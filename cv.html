@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAJIL KK | Service & DevOps Engineer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#040508',
+                        neonCyan: '#00f2fe',
+                        neonBlue: '#4facfe',
+                        neonPurple: '#a855f7',
+                        neonPink: '#ff007f',
+                        neonOrange: '#ff7300',
+                        neonLime: '#39ff14',
+                        whatsappGreen: '#25D366'
+                    },
+                    animation: {
+                        'float-slow': 'float 7s ease-in-out infinite',
+                        'float-medium': 'float 4s ease-in-out infinite',
+                        'float-reverse': 'floatReverse 6s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                        'spin-slow': 'spin 14s linear infinite',
+                        'border-glow': 'borderGlow 5s linear infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-25px) rotate(4deg)' },
+                        },
+                        floatReverse: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(25px) rotate(-4deg)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.3', filter: 'brightness(1) blur(120px)' },
+                            '50%': { opacity: '0.8', filter: 'brightness(1.5) blur(150px)' },
+                        },
+                        borderGlow: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #040508;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor Follower */
+        #cursor-glow {
+            pointer-events: none;
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(255, 0, 127, 0.1) 40%, rgba(0,0,0,0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            transition: width 0.3s, height 0.3s, background 0.3s;
+            mix-blend-mode: screen;
+        }
+
+        /* Welcome Overlay Smooth Fade Out on Scroll */
+        #welcome-screen {
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s;
+        }
+        #welcome-screen.scrolled-out {
+            opacity: 0;
+            transform: translateY(-80px) scale(0.95);
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(14, 18, 28, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7);
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), border-color 0.4s, box-shadow 0.4s;
+            transform-style: preserve-3d;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(255, 0, 127, 0.5);
+            box-shadow: 0 20px 50px -10px rgba(255, 0, 127, 0.3), 0 0 30px rgba(0, 242, 254, 0.2);
+        }
+
+        .glass-nav {
+            background: rgba(4, 5, 8, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Glowing Text & Super Colorful Gradients */
+        .gradient-text {
+            background: linear-gradient(135deg, #39ff14 0%, #00f2fe 25%, #4facfe 50%, #a855f7 75%, #ff007f 100%);
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: borderGlow 6s linear infinite;
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #ff007f 0%, #ff7300 33%, #00f2fe 66%, #a855f7 100%);
+            background-size: 300% 300%;
+            transition: all 0.4s ease;
+            animation: borderGlow 5s ease infinite;
+        }
+
+        .gradient-btn:hover {
+            background-position: right center;
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.7), 0 0 20px rgba(0, 242, 254, 0.7);
+            transform: translateY(-3deg) scale(1.03);
+        }
+
+        /* SCROLL REVEAL ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal.reveal-left {
+            transform: translateX(-60px);
+        }
+
+        .reveal.reveal-right {
+            transform: translateX(60px);
+        }
+
+        .reveal.reveal-scale {
+            transform: scale(0.82);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Stagger Delays */
+        .delay-1 { transition-delay: 0.12s; }
+        .delay-2 { transition-delay: 0.24s; }
+        .delay-3 { transition-delay: 0.36s; }
+        .delay-4 { transition-delay: 0.48s; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #040508;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #ff007f, #a855f7, #00f2fe);
+            border-radius: 5px;
+        }
+
+        /* Instagram Reel Card Aspect Ratio */
+        .reel-card {
+            aspect-ratio: 9/16;
+        }
+
+        /* 3D Floating Geometry Elements */
+        .floating-donut {
+            width: 70px;
+            height: 70px;
+            border: 14px solid #ff007f;
+            border-radius: 50%;
+            box-shadow: 0 0 30px #ff007f, inset 0 0 20px #ff007f;
+            filter: drop-shadow(0 0 15px rgba(255, 0, 127, 0.8));
+        }
+
+        .floating-sphere {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #00f2fe, #4facfe 40%, #05060A 90%);
+            box-shadow: 0 0 30px #00f2fe;
+        }
+
+        .floating-pill {
+            width: 90px;
+            height: 40px;
+            border-radius: 40px;
+            background: linear-gradient(135deg, #39ff14, #00f2fe);
+            box-shadow: 0 0 25px #39ff14;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-neonPink selection:text-white relative">
+
+    <!-- Glowing Custom Cursor Follower -->
+    <div id="cursor-glow" class="hidden md:block"></div>
+
+    <!-- Floating WhatsApp Quick Action Button -->
+    <a href="https://wa.me/919746093884" target="_blank" rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-whatsappGreen text-white flex items-center justify-center text-3xl shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 group"
+       aria-label="Chat on WhatsApp">
+        <span class="absolute inset-0 rounded-full bg-whatsappGreen animate-ping opacity-75"></span>
+        <i class="fa-brands fa-whatsapp relative z-10"></i>
+        <!-- Tooltip -->
+        <span class="absolute right-16 top-1/2 -translate-y-1/2 bg-black/90 text-white text-xs font-bold px-3 py-1.5 rounded-xl border border-whatsappGreen/50 opacity-0 group-hover:opacity-100 transition duration-300 whitespace-nowrap shadow-lg pointer-events-none">
+            Chat on WhatsApp
+        </span>
+    </a>
+
+    <!-- Background Canvas Particles -->
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Ambient Glowing Lights -->
+    <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-neonPink/25 rounded-full pointer-events-none animate-pulse-glow z-0"></div>
+    <div class="fixed bottom-1/4 right-10 w-[700px] h-[700px] bg-neonCyan/20 rounded-full pointer-events-none animate-pulse-glow z-0" style="animation-delay: 1.2s;"></div>
+    <div class="fixed top-1/2 left-10 w-[500px] h-[500px] bg-neonOrange/20 rounded-full pointer-events-none animate-pulse-glow z-0" style="animation-delay: 2.5s;"></div>
+    <div class="fixed top-3/4 left-1/3 w-[550px] h-[550px] bg-neonLime/20 rounded-full pointer-events-none animate-pulse-glow z-0" style="animation-delay: 3.5s;"></div>
+
+    <!-- FULLSCREEN WELCOME OVERLAY SCREEN (Fades/Slides Out on Scroll) -->
+    <div id="welcome-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-darkBg/95 backdrop-blur-2xl border-b border-neonPink/30 text-center px-6">
+        <div class="space-y-6 max-w-4xl mx-auto">
+            <div class="inline-flex items-center space-x-2 px-5 py-2 rounded-full glass-card border border-neonPink/50 text-neonPink text-xs font-bold uppercase tracking-widest animate-pulse">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>WELCOME TO MY PORTFOLIO WORLD</span>
+            </div>
+            
+            <h1 class="font-heading text-5xl sm:text-7xl lg:text-9xl font-black uppercase tracking-tight text-white leading-tight">
+                WELCOME <br>
+                <span class="gradient-text">NAJIL KK</span>
+            </h1>
+
+            <p class="text-gray-300 text-base sm:text-xl font-light max-w-2xl mx-auto">
+                DevOps Trainee @ Zoople Technologies & Hardware Service Engineer.
+            </p>
+
+            <div class="pt-8 flex flex-col items-center justify-center cursor-pointer" onclick="scrollToHero()">
+                <span class="text-xs font-mono tracking-widest text-neonCyan uppercase mb-3 animate-pulse">
+                    SCROLL DOWN TO REVEAL DETAILS
+                </span>
+                <div class="w-12 h-12 rounded-full border-2 border-neonCyan/50 flex items-center justify-center text-neonCyan text-xl animate-bounce-slow shadow-lg hover:border-neonPink hover:text-neonPink transition">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 right-0 z-40 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl gradient-btn flex items-center justify-center font-heading font-black text-white text-xl shadow-lg">
+                    N
+                </div>
+                <span class="font-heading font-bold text-xl tracking-wider text-white group-hover:text-neonCyan transition">
+                    NAJIL <span class="gradient-text">KK</span>
+                </span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-7 text-xs font-semibold text-gray-300 uppercase tracking-wider">
+                <a href="#about" class="hover:text-neonLime transition">ABOUT</a>
+                <a href="#devops" class="hover:text-neonPink transition">DEVOPS & CLOUD</a>
+                <a href="#services" class="hover:text-neonCyan transition">SERVICES</a>
+                <a href="#experience" class="hover:text-neonOrange transition">EXPERIENCE</a>
+                <a href="#projects" class="hover:text-neonPurple transition">PROJECTS</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-full gradient-btn text-white font-bold tracking-wider uppercase shadow-md">
+                    CONTACT ME
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobileMenu" class="hidden md:hidden glass-card border-t border-gray-800 px-6 py-6 space-y-4 text-center">
+            <a href="#about" class="block text-gray-300 hover:text-neonLime transition font-medium">ABOUT</a>
+            <a href="#devops" class="block text-neonPink font-bold transition">DEVOPS & CLOUD</a>
+            <a href="#services" class="block text-gray-300 hover:text-neonCyan transition font-medium">SERVICES</a>
+            <a href="#experience" class="block text-gray-300 hover:text-neonOrange transition font-medium">EXPERIENCE</a>
+            <a href="#projects" class="block text-gray-300 hover:text-neonPurple transition font-medium">PROJECTS</a>
+            <a href="#contact" class="inline-block w-full py-3 rounded-full gradient-btn text-white font-semibold text-xs tracking-wider uppercase">
+                CONTACT ME
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative min-h-screen pt-36 pb-20 flex items-center justify-center overflow-hidden z-10">
+        
+        <!-- 3D Floating Geometry Props -->
+        <div class="absolute top-28 left-10 hidden lg:block animate-float-slow opacity-80 pointer-events-none">
+            <div class="floating-donut"></div>
+        </div>
+        <div class="absolute top-1/3 right-12 hidden lg:block animate-float-reverse opacity-80 pointer-events-none">
+            <div class="floating-sphere"></div>
+        </div>
+        <div class="absolute bottom-20 left-1/4 hidden lg:block animate-float-medium opacity-80 pointer-events-none">
+            <div class="floating-pill"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Hero Content -->
+            <div class="lg:col-span-7 space-y-8 text-center lg:text-left reveal reveal-left">
+                
+                <div class="inline-flex flex-wrap items-center justify-center lg:justify-start gap-2">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border border-neonPink/40">
+                        <span class="w-3 h-3 rounded-full bg-neonPink animate-ping"></span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-neonPink">DevOps Trainee @ Zoople Technologies</span>
+                    </div>
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-card border border-neonCyan/40">
+                        <span class="text-xs font-bold uppercase tracking-widest text-neonCyan">Service Engineer</span>
+                    </div>
+                </div>
+
+                <h1 class="font-heading text-5xl sm:text-7xl xl:text-8xl font-black uppercase tracking-tight text-white leading-none">
+                    HI, I'M <br>
+                    <span class="gradient-text drop-shadow-2xl">NAJIL KK</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-gray-200 font-light max-w-2xl leading-relaxed">
+                    Passionate <span class="text-neonPink font-bold">DevOps & Cloud Practitioner</span> alongside hands-on background as a <span class="text-neonCyan font-bold">Service Engineer & Hardware Specialist</span>. Building automated pipelines, managing Linux systems, and troubleshooting hardware.
+                </p>
+
+                <!-- Action Links: WhatsApp + Instagram Badges -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                    <a href="https://wa.me/919746093884" target="_blank" rel="noopener noreferrer" class="glass-card px-4 py-2 rounded-2xl border border-whatsappGreen/50 hover:border-whatsappGreen flex items-center space-x-2 group text-xs text-white transition">
+                        <i class="fa-brands fa-whatsapp text-whatsappGreen text-lg group-hover:scale-125 transition"></i>
+                        <span class="font-bold">+91 9746093884</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-gray-400"></i>
+                    </a>
+                    <a href="https://www.instagram.com/naaa.jill?obrf=MXJtOXZvN2JkNzl0bw%3D%3D&utm_source=qr" target="_blank" class="glass-card px-4 py-2 rounded-2xl border border-neonPink/40 hover:border-neonPink flex items-center space-x-2 group text-xs text-white transition">
+                        <i class="fa-brands fa-instagram text-neonPink text-lg group-hover:scale-125 transition"></i>
+                        <span class="font-bold">@naaa.jill</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-gray-400"></i>
+                    </a>
+                    <a href="https://www.instagram.com/najill.ashraf?psln=MWM2MDVja2F1cnk5Nw%3D%3D&utm_source=qr" target="_blank" class="glass-card px-4 py-2 rounded-2xl border border-neonPurple/40 hover:border-neonPurple flex items-center space-x-2 group text-xs text-white transition">
+                        <i class="fa-brands fa-instagram text-neonPurple text-lg group-hover:scale-125 transition"></i>
+                        <span class="font-bold">@najill.ashraf</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-gray-400"></i>
+                    </a>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="https://wa.me/919746093884" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-whatsappGreen hover:bg-emerald-500 text-white font-bold text-sm tracking-wider uppercase shadow-xl flex items-center justify-center space-x-3 group transition">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                        <span>WHATSAPP ME</span>
+                    </a>
+                    <a href="#devops" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card hover:border-neonPink text-white font-semibold text-sm tracking-wider uppercase transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-infinity text-neonPink"></i>
+                        <span>DEVOPS TRACK</span>
+                    </a>
+                </div>
+
+                <!-- Quick Highlights Counter -->
+                <div class="pt-8 border-t border-gray-800/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+                    <div>
+                        <div class="font-heading text-3xl sm:text-4xl font-black text-neonLime">Zoople</div>
+                        <div class="text-xs text-gray-400 uppercase font-semibold tracking-wider mt-1">DevOps Training</div>
+                    </div>
+                    <div>
+                        <div class="font-heading text-3xl sm:text-4xl font-black text-neonCyan">100+</div>
+                        <div class="text-xs text-gray-400 uppercase font-semibold tracking-wider mt-1">Systems Serviced</div>
+                    </div>
+                    <div>
+                        <div class="font-heading text-3xl sm:text-4xl font-black text-neonPink">3+</div>
+                        <div class="text-xs text-gray-400 uppercase font-semibold tracking-wider mt-1">Tech Internships</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Hero Visual Card Showcase -->
+            <div class="lg:col-span-5 relative flex justify-center items-center reveal reveal-right">
+                <!-- Glowing Outer Rings -->
+                <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full border-2 border-neonCyan/30 animate-spin-slow absolute"></div>
+                <div class="w-80 h-80 sm:w-[420px] sm:h-[420px] rounded-full border-2 border-dashed border-neonPink/40 absolute"></div>
+
+                <!-- 3D Interactive Card -->
+                <div class="tilt-card relative z-10 glass-card p-6 sm:p-8 rounded-3xl border border-neonPink/40 max-w-sm w-full shadow-2xl animate-float-medium">
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex space-x-2">
+                            <span class="w-3.5 h-3.5 rounded-full bg-neonPink"></span>
+                            <span class="w-3.5 h-3.5 rounded-full bg-neonOrange"></span>
+                            <span class="w-3.5 h-3.5 rounded-full bg-neonLime"></span>
+                        </div>
+                        <span class="text-xs font-mono text-neonLime bg-neonLime/10 px-3 py-1 rounded-full border border-neonLime/40 font-bold">
+                            DEVOPS & SERVICE
+                        </span>
+                    </div>
+
+                    <!-- Visual Tech Avatar / Icon Stage -->
+                    <div class="relative w-full h-56 rounded-2xl overflow-hidden bg-gradient-to-br from-purple-950 via-slate-900 to-black flex items-center justify-center group mb-6 border border-white/10">
+                        <div class="absolute inset-0 bg-[radial-gradient(#ff007f_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
+                        <div class="text-center z-10">
+                            <div class="w-24 h-24 mx-auto mb-3 rounded-2xl bg-gradient-to-tr from-neonPink via-neonPurple to-neonCyan flex items-center justify-center text-white text-5xl shadow-xl transform group-hover:scale-110 transition duration-300">
+                                <i class="fa-solid fa-infinity"></i>
+                            </div>
+                            <div class="font-heading font-black text-white tracking-wide text-lg">AUTOMATION & HARDWARE</div>
+                            <div class="text-xs text-neonCyan font-mono font-bold mt-1">LEARNING @ ZOOPLE TECH</div>
+                        </div>
+                    </div>
+
+                    <!-- Mini Floating Badges -->
+                    <div class="space-y-3">
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-xs font-medium">
+                            <span class="text-gray-200 flex items-center space-x-2">
+                                <i class="fa-brands fa-docker text-neonCyan text-base"></i>
+                                <span>Docker & Containers</span>
+                            </span>
+                            <span class="text-neonCyan font-bold">In Training</span>
+                        </div>
+                        <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between text-xs font-medium">
+                            <span class="text-gray-200 flex items-center space-x-2">
+                                <i class="fa-solid fa-screwdriver-wrench text-neonPink text-base"></i>
+                                <span>Service & Assembly</span>
+                            </span>
+                            <span class="text-neonLime font-bold">Expert</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Abstract Accent Badges -->
+                <div class="absolute -top-6 -right-4 glass-card p-4 rounded-2xl border border-neonPink/50 shadow-2xl hidden sm:flex items-center space-x-3 animate-float-reverse z-20">
+                    <div class="w-10 h-10 rounded-xl bg-neonPink/20 flex items-center justify-center text-neonPink text-xl">
+                        <i class="fa-brands fa-aws"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-400">Cloud Focus</div>
+                        <div class="text-sm font-bold text-white">AWS Basics</div>
+                    </div>
+                </div>
+
+                <div class="absolute -bottom-8 -left-4 glass-card p-4 rounded-2xl border border-neonLime/50 shadow-2xl hidden sm:flex items-center space-x-3 animate-float-slow z-20">
+                    <div class="w-10 h-10 rounded-xl bg-neonLime/20 flex items-center justify-center text-neonLime text-xl">
+                        <i class="fa-brands fa-linux"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-400">Linux Sysadmin</div>
+                        <div class="text-sm font-bold text-white">Active Practice</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- LOGO STRIP -->
+    <section class="py-8 border-y border-gray-800/80 bg-black/60 backdrop-blur-md relative z-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap items-center justify-around gap-6 text-sm font-bold">
+            <div class="flex items-center space-x-3 text-gray-300 hover:text-neonPink transition">
+                <i class="fa-brands fa-docker text-neonPink text-2xl"></i>
+                <span>DOCKER & CI/CD</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-300 hover:text-neonCyan transition">
+                <i class="fa-solid fa-screwdriver-wrench text-neonCyan text-2xl"></i>
+                <span>HARDWARE DIAGNOSTICS</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-300 hover:text-neonOrange transition">
+                <i class="fa-brands fa-linux text-neonOrange text-2xl"></i>
+                <span>LINUX ADMINISTRATION</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-300 hover:text-neonLime transition">
+                <i class="fa-solid fa-network-wired text-neonLime text-2xl"></i>
+                <span>NETWORK ENGINEERING</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-neonLime bg-neonLime/10 px-4 py-1.5 rounded-full border border-neonLime/40">
+                    ABOUT ME
+                </span>
+                <h2 class="font-heading text-4xl sm:text-5xl font-black text-white mt-4 tracking-tight">
+                    SERVICE ENGINEER & DEVOPS PRACTITIONER
+                </h2>
+                <div class="w-24 h-1.5 gradient-btn mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+                <!-- Left Details Box -->
+                <div class="tilt-card lg:col-span-7 glass-card p-8 rounded-3xl flex flex-col justify-between border-neonCyan/30 reveal reveal-left">
+                    <div>
+                        <h3 class="font-heading text-2xl font-bold text-white mb-4">
+                            Connecting physical hardware precision with modern cloud automation.
+                        </h3>
+                        <p class="text-gray-300 leading-relaxed font-light mb-6">
+                            I am a Diploma student in Computer Hardware Engineering from <strong class="text-neonCyan">JDT Islam Polytechnic College, Kozhikode</strong>. Currently, I am expanding my technical domain by training as a <strong class="text-neonPink">DevOps Engineer at Zoople Technologies</strong>.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed font-light mb-6">
+                            My expertise combines physical PC assembly, hardware troubleshooting, OS deployment, and network configuration with modern cloud concepts, Linux command-line, Docker containerization, and Git workflows.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-gray-800">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-11 h-11 rounded-xl bg-neonBlue/20 flex items-center justify-center text-neonBlue text-xl flex-shrink-0">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Education & Training</div>
+                                <div class="text-sm font-bold text-white">Diploma Hardware Eng. & DevOps @ Zoople</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-11 h-11 rounded-xl bg-neonPurple/20 flex items-center justify-center text-neonPurple text-xl flex-shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Location</div>
+                                <div class="text-sm font-bold text-white">Kozhikode, Kerala, India</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Social & Quick Cards -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-4 reveal reveal-right">
+                    
+                    <!-- WhatsApp Direct Contact Card -->
+                    <div class="tilt-card glass-card p-6 rounded-3xl border border-whatsappGreen/50 bg-gradient-to-br from-emerald-950/20 to-teal-950/20">
+                        <h4 class="font-heading font-bold text-lg text-white mb-2 flex items-center space-x-2">
+                            <i class="fa-brands fa-whatsapp text-whatsappGreen text-2xl"></i>
+                            <span>Instant WhatsApp Connect</span>
+                        </h4>
+                        <p class="text-xs text-gray-300 mb-4">Directly chat with me for technical queries, hardware repair, or DevOps projects.</p>
+                        <a href="https://wa.me/919746093884" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-2xl bg-whatsappGreen hover:bg-emerald-500 text-white font-bold text-xs transition">
+                            <span>Open WhatsApp (+91 9746093884)</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Instagram Social Highlight Box -->
+                    <div class="tilt-card glass-card p-6 rounded-3xl border border-neonPink/40 bg-gradient-to-br from-pink-950/20 to-purple-950/20">
+                        <h4 class="font-heading font-bold text-lg text-white mb-3 flex items-center space-x-2">
+                            <i class="fa-brands fa-instagram text-neonPink text-xl"></i>
+                            <span>Connect on Instagram</span>
+                        </h4>
+                        <div class="space-y-3">
+                            <a href="https://www.instagram.com/naaa.jill?obrf=MXJtOXZvN2JkNzl0bw%3D%3D&utm_source=qr" target="_blank" class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-neonPink transition">
+                                <span class="text-xs text-gray-200 font-bold">@naaa.jill</span>
+                                <span class="text-xs text-neonPink font-semibold">Follow <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                            </a>
+                            <a href="https://www.instagram.com/najill.ashraf?psln=MWM2MDVja2F1cnk5Nw%3D%3D&utm_source=qr" target="_blank" class="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/10 hover:border-neonPurple transition">
+                                <span class="text-xs text-gray-200 font-bold">@najill.ashraf</span>
+                                <span class="text-xs text-neonPurple font-semibold">Follow <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEVOPS & CLOUD SECTION -->
+    <section id="devops" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-neonPink bg-neonPink/10 px-4 py-1.5 rounded-full border border-neonPink/40">
+                    SPECIALIZATION
+                </span>
+                <h2 class="font-heading text-4xl sm:text-5xl font-black text-white mt-4 tracking-tight">
+                    DEVOPS & CLOUD TRAINEE
+                </h2>
+                <p class="text-neonPink font-mono text-sm mt-2">@ Zoople Technologies</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- DevOps Card 1 -->
+                <div class="tilt-card glass-card p-8 rounded-3xl border border-neonPink/40 reveal reveal-scale delay-1">
+                    <div class="w-14 h-14 rounded-2xl bg-neonPink/20 flex items-center justify-center text-neonPink text-3xl mb-6">
+                        <i class="fa-brands fa-docker"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3">Containerization</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Learning Docker container management, creating Dockerfiles, building lightweight images, and container orchestration with Kubernetes basics.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-neonPink">
+                        <span class="px-2.5 py-1 rounded-md bg-neonPink/10 border border-neonPink/30">Docker</span>
+                        <span class="px-2.5 py-1 rounded-md bg-neonPink/10 border border-neonPink/30">Kubernetes</span>
+                    </div>
+                </div>
+
+                <!-- DevOps Card 2 -->
+                <div class="tilt-card glass-card p-8 rounded-3xl border border-neonCyan/40 reveal reveal-scale delay-2">
+                    <div class="w-14 h-14 rounded-2xl bg-neonCyan/20 flex items-center justify-center text-neonCyan text-3xl mb-6">
+                        <i class="fa-brands fa-linux"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3">Linux & Cloud</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Command line system administration, shell scripting, managing Linux servers, permissions, SSH configuration, and AWS cloud infrastructure basics.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-neonCyan">
+                        <span class="px-2.5 py-1 rounded-md bg-neonCyan/10 border border-neonCyan/30">Linux Sysadmin</span>
+                        <span class="px-2.5 py-1 rounded-md bg-neonCyan/10 border border-neonCyan/30">AWS Cloud</span>
+                    </div>
+                </div>
+
+                <!-- DevOps Card 3 -->
+                <div class="tilt-card glass-card p-8 rounded-3xl border border-neonPurple/40 reveal reveal-scale delay-3">
+                    <div class="w-14 h-14 rounded-2xl bg-neonPurple/20 flex items-center justify-center text-neonPurple text-3xl mb-6">
+                        <i class="fa-solid fa-code-branch"></i>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3">CI/CD & Git Workflow</h3>
+                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                        Understanding automated build pipelines, GitHub action workflows, version control branching strategies, and continuous integration concepts.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-neonPurple">
+                        <span class="px-2.5 py-1 rounded-md bg-neonPurple/10 border border-neonPurple/30">Git / GitHub</span>
+                        <span class="px-2.5 py-1 rounded-md bg-neonPurple/10 border border-neonPurple/30">CI/CD Pipelines</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES OFFERED SECTION -->
+    <section id="services" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-neonCyan bg-neonCyan/10 px-4 py-1.5 rounded-full border border-neonCyan/40">
+                    SERVICES PROVIDED
+                </span>
+                <h2 class="font-heading text-4xl sm:text-5xl font-black text-white mt-4 tracking-tight">
+                    TECHNICAL & SERVICE ENGINEERING
+                </h2>
+                <p class="text-gray-400 text-sm mt-3">High-quality, reliable technical maintenance and system support.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service Card 01 -->
+                <div class="tilt-card glass-card p-8 rounded-3xl relative group reveal reveal-scale delay-1">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="font-heading text-6xl font-black text-white/10 group-hover:text-neonCyan/40 transition">01</span>
+                        <div class="w-14 h-14 rounded-2xl bg-neonBlue/20 flex items-center justify-center text-neonBlue text-2xl group-hover:scale-110 transition">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3 group-hover:text-neonCyan transition">
+                        Hardware Troubleshooting & PC Assembly
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Diagnostic testing for desktop computers and laptops. Component testing, thermal paste repasting, RAM/SSD upgrades, motherboard fault isolation, and building custom PC rigs.
+                    </p>
+                </div>
+
+                <!-- Service Card 02 -->
+                <div class="tilt-card glass-card p-8 rounded-3xl relative group reveal reveal-scale delay-2">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="font-heading text-6xl font-black text-white/10 group-hover:text-neonPurple/40 transition">02</span>
+                        <div class="w-14 h-14 rounded-2xl bg-neonPurple/20 flex items-center justify-center text-neonPurple text-2xl group-hover:scale-110 transition">
+                            <i class="fa-solid fa-compact-disc"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3 group-hover:text-neonPurple transition">
+                        System Maintenance & OS Setup
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Fresh installation of Windows and Linux operating systems. Automated driver configuration, disk partition management, software installation, and speed tuning.
+                    </p>
+                </div>
+
+                <!-- Service Card 03 -->
+                <div class="tilt-card glass-card p-8 rounded-3xl relative group reveal reveal-scale delay-3">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="font-heading text-6xl font-black text-white/10 group-hover:text-neonOrange/40 transition">03</span>
+                        <div class="w-14 h-14 rounded-2xl bg-neonOrange/20 flex items-center justify-center text-neonOrange text-2xl group-hover:scale-110 transition">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3 group-hover:text-neonOrange transition">
+                        Network Configuration & Support
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Setting up home and office networks, LAN cable crimping & testing, router/switch configurations, printer sharing setup, and network connectivity debugging.
+                    </p>
+                </div>
+
+                <!-- Service Card 04 -->
+                <div class="tilt-card glass-card p-8 rounded-3xl relative group reveal reveal-scale delay-4">
+                    <div class="flex justify-between items-start mb-6">
+                        <span class="font-heading text-6xl font-black text-white/10 group-hover:text-neonPink/40 transition">04</span>
+                        <div class="w-14 h-14 rounded-2xl bg-neonPink/20 flex items-center justify-center text-neonPink text-2xl group-hover:scale-110 transition">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                    </div>
+                    <h3 class="font-heading text-2xl font-bold text-white mb-3 group-hover:text-neonPink transition">
+                        IoT & Smart Hardware Solutions
+                    </h3>
+                    <p class="text-gray-300 text-sm leading-relaxed">
+                        Designing smart hardware prototypes using ESP8266 and sensors. Integrating hardware biometric sensors, Telegram API alerts, and Python backend logic.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE TIMELINE -->
+    <section id="experience" class="py-24 relative z-10 bg-black/40">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-neonOrange bg-neonOrange/10 px-4 py-1.5 rounded-full border border-neonOrange/40">
+                    EXPERIENCE TIMELINE
+                </span>
+                <h2 class="font-heading text-4xl sm:text-5xl font-black text-white mt-4 tracking-tight">
+                    TRAINING & INTERNSHIPS
+                </h2>
+            </div>
+
+            <div class="relative border-l-2 border-gray-800 ml-4 md:ml-32 space-y-12">
+                <!-- Item 0: Zoople DevOps -->
+                <div class="relative pl-8 md:pl-12 group reveal reveal-left">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-neonPink border-4 border-darkBg group-hover:scale-150 transition"></div>
+                    
+                    <div class="tilt-card glass-card p-6 sm:p-8 rounded-3xl border-neonPink/40">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white">DevOps Engineer Trainee</h3>
+                                <div class="text-neonPink font-bold text-sm">Zoople Technologies</div>
+                            </div>
+                            <span class="px-4 py-1.5 rounded-full bg-neonPink/10 border border-neonPink/30 text-xs font-mono text-neonPink w-fit font-bold">
+                                Current Learning Track
+                            </span>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Enrolled in advanced DevOps training covering Docker containers, CI/CD automation pipelines, Linux system configuration, AWS cloud services, and Git version control workflows.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 1: Matrix IT World -->
+                <div class="relative pl-8 md:pl-12 group reveal reveal-left delay-1">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-neonCyan border-4 border-darkBg group-hover:scale-150 transition"></div>
+                    
+                    <div class="tilt-card glass-card p-6 sm:p-8 rounded-3xl border-neonCyan/40">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white">Trainee Technical</h3>
+                                <div class="text-neonCyan font-bold text-sm">Matrix IT World — Calicut</div>
+                            </div>
+                            <span class="px-4 py-1.5 rounded-full bg-neonCyan/10 border border-neonCyan/30 text-xs font-mono text-neonCyan w-fit font-bold">
+                                3 Months Duration
+                            </span>
+                        </div>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Gained practical hardware diagnostics, desktop assembly, system OS maintenance, driver installation, and customer technical service ticketing experience.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2: GJ Global -->
+                <div class="relative pl-8 md:pl-12 group reveal reveal-left delay-2">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-neonPurple border-4 border-darkBg group-hover:scale-150 transition"></div>
+                    
+                    <div class="tilt-card glass-card p-6 sm:p-8 rounded-3xl border-neonPurple/40">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white">Technical Intern</h3>
+                                <div class="text-neonPurple font-bold text-sm">GJ Global — Calicut Cyberpark</div>
+                            </div>
+                            <span class="px-4 py-1.5 rounded-full bg-neonPurple/10 border border-neonPurple/30 text-xs font-mono text-neonPurple w-fit font-bold">
+                                Jun 2025 – Jul 2025
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 font-light">
+                            <li>Bootcamp training on AI, Machine Learning fundamentals, and Python development.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 3: Freston Analytics -->
+                <div class="relative pl-8 md:pl-12 group reveal reveal-left delay-3">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-neonLime border-4 border-darkBg group-hover:scale-150 transition"></div>
+                    
+                    <div class="tilt-card glass-card p-6 sm:p-8 rounded-3xl border-neonLime/40">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                            <div>
+                                <h3 class="font-heading text-2xl font-bold text-white">Technical Intern</h3>
+                                <div class="text-neonLime font-bold text-sm">Freston Analytics — Calicut Cyberpark</div>
+                            </div>
+                            <span class="px-4 py-1.5 rounded-full bg-neonLime/10 border border-neonLime/30 text-xs font-mono text-neonLime w-fit font-bold">
+                                May 2024
+                            </span>
+                        </div>
+                        <ul class="list-disc list-inside text-gray-300 text-sm space-y-2 font-light">
+                            <li>Practical experience in Python programming and algorithm problem solving.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-neonPink bg-neonPink/10 px-4 py-1.5 rounded-full border border-neonPink/40">
+                    FEATURED PROJECT
+                </span>
+                <h2 class="font-heading text-4xl sm:text-5xl font-black text-white mt-4 tracking-tight">
+                    HARDWARE & IoT SPOTLIGHT
+                </h2>
+            </div>
+
+            <!-- Project Highlight Card -->
+            <div class="tilt-card glass-card rounded-3xl overflow-hidden border border-neonPink/40 shadow-2xl reveal reveal-scale">
+                <div class="grid grid-cols-1 lg:grid-cols-12 items-center">
+                    
+                    <div class="lg:col-span-6 p-8 bg-gradient-to-br from-indigo-950 via-purple-950 to-black relative min-h-[360px] flex items-center justify-center border-b lg:border-b-0 lg:border-r border-white/10">
+                        <div class="absolute inset-0 bg-[radial-gradient(#ff007f_1px,transparent_1px)] [background-size:20px_20px] opacity-30"></div>
+                        
+                        <div class="relative z-10 glass-card p-6 rounded-2xl max-w-md w-full border border-neonCyan/50 text-center shadow-2xl">
+                            <div class="w-16 h-16 mx-auto rounded-full bg-neonCyan/20 flex items-center justify-center text-neonCyan text-3xl mb-4 animate-pulse">
+                                <i class="fa-solid fa-fingerprint"></i>
+                            </div>
+                            <h4 class="font-heading font-black text-xl text-white">Biometric Security Module</h4>
+                            <p class="text-xs text-gray-400 mt-1 font-mono">ESP8266 + Telegram OTP + Python Backend</p>
+                            
+                            <div class="mt-6 grid grid-cols-2 gap-3 text-xs">
+                                <div class="bg-black/70 p-3 rounded-xl border border-gray-800">
+                                    <span class="text-gray-400 block text-[10px]">AUTH STAGE</span>
+                                    <span class="text-neonLime font-mono font-bold">BIOMETRIC MATCH</span>
+                                </div>
+                                <div class="bg-black/70 p-3 rounded-xl border border-gray-800">
+                                    <span class="text-gray-400 block text-[10px]">2FA SECURE</span>
+                                    <span class="text-neonCyan font-mono font-bold">TELEGRAM OTP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6 p-8 lg:p-12 space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <span class="px-3 py-1 rounded-full bg-neonCyan/20 text-neonCyan text-xs font-mono border border-neonCyan/40 font-bold">HARDWARE & IoT</span>
+                            <span class="px-3 py-1 rounded-full bg-neonPurple/20 text-neonPurple text-xs font-mono border border-neonPurple/40 font-bold">PYTHON & SQL</span>
+                        </div>
+
+                        <h3 class="font-heading text-3xl font-black text-white">
+                            Fingerprint ATM Security System
+                        </h3>
+
+                        <p class="text-gray-300 text-sm leading-relaxed font-light">
+                            Engineered a security system prototype using an <strong>ESP8266 microcontroller</strong> combined with biometric fingerprint scanning and a custom Python/SQL backend for user data management.
+                        </p>
+
+                        <div class="space-y-3 text-xs text-gray-200">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-shield-halved text-neonLime text-base"></i>
+                                <span>Biometric verification paired with OTP alerts.</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-paper-plane text-neonPink text-base"></i>
+                                <span>Telegram API integration for instantaneous security OTP dispatch.</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 flex flex-wrap gap-2 text-xs font-mono">
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-neonCyan font-bold">ESP8266</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-neonPink font-bold">Biometric Sensor</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-neonPurple font-bold">Python</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-neonLime font-bold">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-24 relative z-10 bg-black/70">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-bold uppercase tracking-widest text-neonCyan bg-neonCyan/10 px-4 py-1.5 rounded-full border border-neonCyan/40">
+                    GET IN TOUCH
+                </span>
+                <h2 class="font-heading text-4xl sm:text-5xl font-black text-white mt-4 tracking-tight">
+                    LET'S CONNECT & COLLABORATE
+                </h2>
+                <p class="text-gray-400 text-sm mt-3">Ready for DevOps engineering roles, system maintenance, and tech opportunities.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Info & Social Links -->
+                <div class="tilt-card lg:col-span-5 glass-card p-8 rounded-3xl space-y-8 border-neonCyan/30 reveal reveal-left">
+                    <div>
+                        <h3 class="font-heading text-2xl font-bold text-white mb-2">Contact Details</h3>
+                        <p class="text-gray-400 text-sm">Reach out directly via WhatsApp, email, phone, or Instagram.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Direct WhatsApp Contact Link -->
+                        <a href="https://wa.me/919746093884" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 group p-3.5 rounded-2xl bg-whatsappGreen/10 border border-whatsappGreen/30 hover:bg-whatsappGreen/20 transition">
+                            <div class="w-12 h-12 rounded-xl bg-whatsappGreen/20 flex items-center justify-center text-whatsappGreen text-2xl group-hover:scale-110 transition">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-whatsappGreen font-bold uppercase tracking-wider">WhatsApp Direct</div>
+                                <div class="text-sm font-bold text-white group-hover:text-whatsappGreen transition">+91 9746093884</div>
+                            </div>
+                        </a>
+
+                        <a href="mailto:najilkk97@gmail.com" class="flex items-center space-x-4 group p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 transition border border-white/5">
+                            <div class="w-12 h-12 rounded-xl bg-neonCyan/20 flex items-center justify-center text-neonCyan text-xl group-hover:scale-110 transition">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Email Address</div>
+                                <div class="text-sm font-bold text-white group-hover:text-neonCyan transition">najilkk97@gmail.com</div>
+                            </div>
+                        </a>
+
+                        <a href="tel:+919746093884" class="flex items-center space-x-4 group p-3.5 rounded-2xl bg-white/5 hover:bg-white/10 transition border border-white/5">
+                            <div class="w-12 h-12 rounded-xl bg-neonPurple/20 flex items-center justify-center text-neonPurple text-xl group-hover:scale-110 transition">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-gray-400">Phone Number</div>
+                                <div class="text-sm font-bold text-white group-hover:text-neonPurple transition">+91 9746093884</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Instagram Profiles Dedicated Card -->
+                    <div class="pt-6 border-t border-gray-800 space-y-3">
+                        <div class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Instagram Profiles</div>
+                        
+                        <a href="https://www.instagram.com/naaa.jill?obrf=MXJtOXZvN2JkNzl0bw%3D%3D&utm_source=qr" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-neonPink/10 border border-neonPink/30 hover:bg-neonPink/20 transition group">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-brands fa-instagram text-neonPink text-xl group-hover:scale-125 transition"></i>
+                                <span class="text-sm font-bold text-white">@naaa.jill</span>
+                            </div>
+                            <span class="text-xs text-neonPink font-bold uppercase tracking-wider">Visit <i class="fa-solid fa-external-link text-[10px] ml-1"></i></span>
+                        </a>
+
+                        <a href="https://www.instagram.com/najill.ashraf?psln=MWM2MDVja2F1cnk5Nw%3D%3D&utm_source=qr" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-neonPurple/10 border border-neonPurple/30 hover:bg-neonPurple/20 transition group">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-brands fa-instagram text-neonPurple text-xl group-hover:scale-125 transition"></i>
+                                <span class="text-sm font-bold text-white">@najill.ashraf</span>
+                            </div>
+                            <span class="text-xs text-neonPurple font-bold uppercase tracking-wider">Visit <i class="fa-solid fa-external-link text-[10px] ml-1"></i></span>
+                        </a>
+
+                        <a href="https://linkedin.com/in/najil-kk-4212433b9" target="_blank" class="flex items-center justify-between p-3.5 rounded-2xl bg-neonCyan/10 border border-neonCyan/30 hover:bg-neonCyan/20 transition group">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-brands fa-linkedin-in text-neonCyan text-xl group-hover:scale-125 transition"></i>
+                                <span class="text-sm font-bold text-white">LinkedIn Profile</span>
+                            </div>
+                            <span class="text-xs text-neonCyan font-bold uppercase tracking-wider">Visit <i class="fa-solid fa-external-link text-[10px] ml-1"></i></span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Contact Form -->
+                <div class="tilt-card lg:col-span-7 glass-card p-8 rounded-3xl border-neonPink/30 reveal reveal-right">
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Your Name</label>
+                                <input type="text" required placeholder="Full Name" class="w-full bg-white/5 border border-gray-800 rounded-2xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Email Address</label>
+                                <input type="email" required placeholder="your@email.com" class="w-full bg-white/5 border border-gray-800 rounded-2xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Subject</label>
+                            <input type="text" required placeholder="DevOps / Service Engineering Opportunity" class="w-full bg-white/5 border border-gray-800 rounded-2xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-gray-300 mb-2">Message</label>
+                            <textarea rows="4" required placeholder="Write your message..." class="w-full bg-white/5 border border-gray-800 rounded-2xl px-4 py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan transition"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-2xl gradient-btn text-white font-black text-sm uppercase tracking-wider shadow-xl flex items-center justify-center space-x-2">
+                            <span>SEND MESSAGE</span>
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+
+                    <div id="formSuccess" class="hidden mt-4 p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs text-center font-bold">
+                        Thank you! Your message has been sent successfully.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-gray-800/80 glass-nav relative z-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center text-white font-bold text-sm">N</div>
+                <span class="font-heading font-bold text-white tracking-wide">NAJIL KK</span>
+            </div>
+
+            <p class="text-xs text-gray-400">
+                &copy; <span id="year"></span> Najil KK. DevOps Trainee & Technical Specialist.
+            </p>
+
+            <div class="flex space-x-4 text-lg">
+                <a href="https://wa.me/919746093884" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-whatsappGreen transition">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/naaa.jill?obrf=MXJtOXZvN2JkNzl0bw%3D%3D&utm_source=qr" target="_blank" class="text-gray-400 hover:text-neonPink transition">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.instagram.com/najill.ashraf?psln=MWM2MDVja2F1cnk5Nw%3D%3D&utm_source=qr" target="_blank" class="text-gray-400 hover:text-neonPurple transition">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://linkedin.com/in/najil-kk-4212433b9" target="_blank" class="text-gray-400 hover:text-neonCyan transition">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // Set dynamic year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('#mobileMenu a').forEach(l => l.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+        // Welcome screen fade out on scroll
+        const welcomeScreen = document.getElementById('welcome-screen');
+        function handleWelcomeScroll() {
+            if (window.scrollY > 40) {
+                welcomeScreen.classList.add('scrolled-out');
+            } else {
+                welcomeScreen.classList.remove('scrolled-out');
+            }
+        }
+        window.addEventListener('scroll', handleWelcomeScroll);
+
+        function scrollToHero() {
+            window.scrollTo({
+                top: window.innerHeight * 0.7,
+                behavior: 'smooth'
+            });
+        }
+
+        // Contact form simulation
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formSuccess.classList.remove('hidden');
+            contactForm.reset();
+            setTimeout(() => formSuccess.classList.add('hidden'), 5000);
+        });
+
+        // 1. Custom Glowing Cursor Follower
+        const cursorGlow = document.getElementById('cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = `${e.clientX}px`;
+            cursorGlow.style.top = `${e.clientY}px`;
+        });
+
+        // 2. 3D Tilt Card Interaction
+        const tiltCards = document.querySelectorAll('.tilt-card');
+        tiltCards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                const rotateX = (-y / rect.height) * 12;
+                const rotateY = (x / rect.width) * 12;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+
+        // 3. Scroll Reveal Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            reveals.forEach(el => revealObserver.observe(el));
+        });
+
+        // 4. Background Floating Particle Canvas Animation
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.6;
+                this.speedY = (Math.random() - 0.5) * 0.6;
+                this.color = ['#ff007f', '#00f2fe', '#a855f7', '#39ff14', '#25D366'][Math.floor(Math.random() * 5)];
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 65; i++) {
+            particles.push(new Particle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+    </script>
+</body>
+</html>
